@@ -1,40 +1,79 @@
 using System;
-public class ReversePolishCalc {
+using System.Collections.Generic;
+using System.Linq;
 
-    // You'll need a variable here to keep track of the top of the stack
+namespace Daily_Project_Reverse_Polish_Calculator
+{
+    public class ReversePolishCalc
+    {
 
-    // The array of the input string split up
-    private String[] tokens;
+        // You'll need a variable here to keep track of the top of the stack
 
-    // The stack
-    private String[] stack;
+        // The array of the input string split up
+        public string TopOfStack { get; set; }
+        private String[] tokens;
 
-    public double Calculate(String input) {
+        // The stack
+        private Stack<string> stack = new Stack<string>();
 
-        // 1. Use the String split method to split the string into tokens at the commas
-        tokens = ...
+        public double Calculate(String input)
+        {
 
-        // 2. Allocate a stack as big as the number of tokens
-        stack = ...
 
-        // 3. write the algorithm
-        for(int i = 0; i < tokens.Length; ++i) {
-            // calls to push() and pop() and do the math here
+            // 1. Use the String split method to split the string into tokens at the commas
+            tokens = input.Split(',');
+            Console.WriteLine(tokens);
+
+            //Number & Operator variables
+
+            // 3. write the algorithm
+            for (int i = 0; i < tokens.Length - 1; i++)
+            {
+                // calls to push() and pop() and do the math here
+                if (tokens[i] == "+")
+                {
+                    var a = double.Parse(stack.Pop());
+                    var b = double.Parse(stack.Pop());
+                    var result = a + b;
+                    var realResult = result.ToString();
+                    stack.Push(realResult);
+                }
+                else if (tokens[i] == "-")
+                {
+                    var a = double.Parse(stack.Pop());
+                    var b = double.Parse(stack.Pop());
+                    var result = a - b;
+                    var realResult = result.ToString();
+                    stack.Push(realResult);
+                }
+                else if (tokens[i] == "/")
+                {
+                    var a = double.Parse(stack.Pop());
+                    var b = double.Parse(stack.Pop());
+                    var result = a / b;
+                    var realResult = result.ToString();
+                    stack.Push(realResult);
+                }
+                else if (tokens[i] == "*")
+                {
+                    var a = double.Parse(stack.Pop());
+                    var b = double.Parse(stack.Pop());
+                    var result = a * b;
+                    var realResult = result.ToString();
+                    stack.Push(realResult);
+
+                }
+                else
+                {
+                    stack.Push(tokens[i]);
+                }
+            }
+            var finalResult = stack.Pop();
+
+            // 4. return the result
+            return double.Parse(finalResult);
         }
-
-        // 4. return the result
-        return pop();
-    }
-
-    private void Push(String number) {
-        // push on the stack
-    }
-
-    private void Push(double d) {
-        // change the double to a string and then push it on the stack
-    }
-
-    private double Pop() {
-        // remove the string from the top of the stack and convert it to a double and return it
     }
 }
+
+
