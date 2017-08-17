@@ -10,7 +10,6 @@ namespace Daily_Project_Reverse_Polish_Calculator
         // You'll need a variable here to keep track of the top of the stack
 
         // The array of the input string split up
-        public string TopOfStack { get; set; }
         private String[] tokens;
 
         // The stack
@@ -18,12 +17,8 @@ namespace Daily_Project_Reverse_Polish_Calculator
 
         public double Calculate(String input)
         {
-
-
             // 1. Use the String split method to split the string into tokens at the commas
             tokens = input.Split(',');
-            Console.WriteLine(tokens);
-
             //Number & Operator variables
 
             // 3. write the algorithm
