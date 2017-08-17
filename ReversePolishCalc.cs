@@ -27,14 +27,14 @@ namespace Daily_Project_Reverse_Polish_Calculator
             //Number & Operator variables
 
             // 3. write the algorithm
-            for (int i = 0; i < tokens.Length - 1; i++)
+            for (int i = 0; i < tokens.Length; i++)
             {
                 // calls to push() and pop() and do the math here
                 if (tokens[i] == "+")
                 {
                     var a = double.Parse(stack.Pop());
                     var b = double.Parse(stack.Pop());
-                    var result = a + b;
+                    var result = b + a;
                     var realResult = result.ToString();
                     stack.Push(realResult);
                 }
@@ -42,7 +42,7 @@ namespace Daily_Project_Reverse_Polish_Calculator
                 {
                     var a = double.Parse(stack.Pop());
                     var b = double.Parse(stack.Pop());
-                    var result = a - b;
+                    var result = b - a;
                     var realResult = result.ToString();
                     stack.Push(realResult);
                 }
@@ -50,7 +50,7 @@ namespace Daily_Project_Reverse_Polish_Calculator
                 {
                     var a = double.Parse(stack.Pop());
                     var b = double.Parse(stack.Pop());
-                    var result = a / b;
+                    var result = b / a;
                     var realResult = result.ToString();
                     stack.Push(realResult);
                 }
@@ -58,7 +58,7 @@ namespace Daily_Project_Reverse_Polish_Calculator
                 {
                     var a = double.Parse(stack.Pop());
                     var b = double.Parse(stack.Pop());
-                    var result = a * b;
+                    var result = b * a;
                     var realResult = result.ToString();
                     stack.Push(realResult);
 
